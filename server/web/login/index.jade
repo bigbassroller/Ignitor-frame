@@ -1,0 +1,28 @@
+extends ../layouts/default
+
+block head
+  title Login
+
+block feet
+  //- script(src='/views/login/index.min.js?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-6
+      div.page-header
+        h1 Sign In
+      div#login
+
+      form
+        div.form-group(class='')
+          label Username or Email:
+          input.form-control(type='text', name='username', value='')
+          span.help-block 
+        div.form-group(class='')
+          label Password:
+          input.form-control(type='password', name='password', value='')
+          span.help-block 
+        div.form-actions
+          button.btn.btn-primary.btn-login(type='button') Sign In
+          |&nbsp;
+          a.btn.btn-link(href='/login/forgot') Forgot your password?

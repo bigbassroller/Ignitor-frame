@@ -60,7 +60,9 @@ var manifest = {
         './server/web/public': {},
         './server/web/index': {},
         './server/web/about': {},
-        './server/web/signup': {}
+        './server/web/signup': {},
+        './server/web/contact': {},
+        './server/web/login': {}
     }
 };
 
