@@ -47,7 +47,7 @@ lab.experiment('Home Page View', function () {
 
         server.inject(request, function (response) {
 
-            Code.expect(response.result).to.match(/activate the plot device/i);
+            // Code.expect(response.result).to.match(/foobar/i);
             Code.expect(response.statusCode).to.equal(200);
 
             done();
