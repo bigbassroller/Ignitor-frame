@@ -2,7 +2,7 @@ var Lab = require('lab');
 var Code = require('code');
 var Config = require('../../../config');
 var Hapi = require('hapi');
-var HomePlugin = require('../../../server/web/index');
+var AboutPlugin = require('../../../server/web/about/index');
 
 
 var lab = exports.lab = Lab.script();
@@ -11,7 +11,7 @@ var request, server;
 
 lab.beforeEach(function (done) {
 
-    var plugins = [HomePlugin];
+    var plugins = [AboutPlugin];
     server = new Hapi.Server();
     server.connection({ port: Config.get('/port/web') });
     server.views({
@@ -29,32 +29,6 @@ lab.beforeEach(function (done) {
 });
 
 
-lab.experiment('Home Page View', function () {
-
-    lab.beforeEach(function (done) {
-
-        request = {
-            method: 'GET',
-            url: '/'
-        };
-
-        done();
-    });
-
-
-
-    lab.test('home page renders properly', function (done) {
-
-        server.inject(request, function (response) {
-
-            // Code.expect(response.result).to.match(/foobar/i);
-            Code.expect(response.statusCode).to.equal(200);
-
-            done();
-        });
-    });
-});
-
 lab.experiment('About Page View', function () {
 
     lab.beforeEach(function (done) {
@@ -69,12 +43,12 @@ lab.experiment('About Page View', function () {
 
 
 
-    lab.test('About page renders properly', function (done) {
+    lab.test('about page renders properly', function (done) {
 
         server.inject(request, function (response) {
 
-            // Code.expect(response.result).to.match(/foobar/i);
-            Code.expect(response.statusCode).to.equal(404);
+            // Code.expect(response.result).to.match(/About us/i);
+            Code.expect(response.statusCode).to.equal(200);
 
             done();
         });

@@ -57,7 +57,9 @@ var manifest = {
         './server/api/signup': { basePath: '/api' },
         './server/api/statuses': { basePath: '/api' },
         './server/api/users': { basePath: '/api' },
-        './server/web/index': {}
+        './server/web/public': {},
+        './server/web/index': {},
+        './server/web/about': {}
     }
 };
 
