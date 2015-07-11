@@ -16,6 +16,7 @@
     "async": "^1.x.x",
     "bcrypt": "^0.8.x",
     "boom": "^2.x.x",
+    "bootstrap-sass": "^3.3.5",
     "confidence": "^1.x.x",
     "glue": "^2.x.x",
     "gulp-concat": "^2.6.0",
