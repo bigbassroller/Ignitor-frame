@@ -2,6 +2,8 @@
 var Gulp = require('gulp');
 
 // Include Our Plugins
+var Path = require('path');
+var Newer = require('gulp-newer');
 var Jshint = require('gulp-jshint');
 var Sass = require('gulp-sass');
 var Concat = require('gulp-concat');
@@ -19,13 +21,24 @@ Gulp.task('lint', function () {
 // Compile Our sass
 Gulp.task('sass', function () {
 
-    return Gulp.src([
-        'assets/scss/font-awesome-4.3.0/scss/font-awesome.scss',
-        'assets/scss/build.scss'
-        ])
-        .pipe(Sass())
-        .pipe(Concat('frame.css'))
-        .pipe(Gulp.dest('public/layouts'));
+    var bundleConfigs = [{
+        entries: [
+           'assets/scss/font-awesome-4.3.0/scss/font-awesome.scss',
+            'assets/scss/build.scss'
+        ],
+        dest: 'public/layouts',
+        outputName: 'frame.css'
+    }];
+
+    return bundleConfigs.map(function (bundleConfig) {
+
+        return Gulp.src(bundleConfig.entries)
+            .pipe(Sass())
+            .pipe(Newer(Path.join(bundleConfig.dest, bundleConfig.outputName)))
+            .pipe(Concat(bundleConfig.outputName))
+            .pipe(Gulp.dest(bundleConfig.dest));
+    });
+
 });
 
 // Concatenate & Minify JS
