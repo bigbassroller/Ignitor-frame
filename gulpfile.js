@@ -27,7 +27,7 @@ Gulp.task('sass', function () {
             'assets/scss/build.scss'
         ],
         dest: 'public/layouts',
-        outputName: 'frame.css'
+        outputName: 'core.css'
     }];
 
     return bundleConfigs.map(function (bundleConfig) {
