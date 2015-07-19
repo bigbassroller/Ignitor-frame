@@ -23,11 +23,17 @@ Gulp.task('sass', function () {
 
     var bundleConfigs = [{
         entries: [
-           'assets/scss/font-awesome-4.3.0/scss/font-awesome.scss',
+            'assets/scss/font-awesome-4.3.0/scss/font-awesome.scss',
             'assets/scss/build.scss'
         ],
         dest: 'public/layouts',
         outputName: 'core.css'
+    }, {
+        entries: [
+        'server/web/home/index.scss'
+        ],
+        dest: 'public/pages/home',
+        outputName: 'index.css'
     }];
 
     return bundleConfigs.map(function (bundleConfig) {

@@ -2,7 +2,7 @@ var Lab = require('lab');
 var Code = require('code');
 var Config = require('../../../config');
 var Hapi = require('hapi');
-var HomePlugin = require('../../../server/web/index');
+var HomePlugin = require('../../../server/web/home/index');
 
 
 var lab = exports.lab = Lab.script();
@@ -55,28 +55,4 @@ lab.experiment('Home Page View', function () {
     });
 });
 
-lab.experiment('About Page View', function () {
 
-    lab.beforeEach(function (done) {
-
-        request = {
-            method: 'GET',
-            url: '/about'
-        };
-
-        done();
-    });
-
-
-
-    lab.test('About page renders properly', function (done) {
-
-        server.inject(request, function (response) {
-
-            // Code.expect(response.result).to.match(/foobar/i);
-            Code.expect(response.statusCode).to.equal(404);
-
-            done();
-        });
-    });
-});
