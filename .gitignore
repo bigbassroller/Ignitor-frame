@@ -1,6 +1,5 @@
 ignitor-frame.sublime-workspace
 ignitor-frame.sublime-project
-public/
 .DS_Store
 node_modules/*
 test/artifacts/*
