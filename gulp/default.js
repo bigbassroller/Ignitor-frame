@@ -1,3 +1,3 @@
 var Gulp = require('gulp');
 
-Gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
+Gulp.task('default', ['lint', 'sass', 'script', 'watch']);

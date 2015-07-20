@@ -1,17 +1,39 @@
 var Gulp = require('gulp');
+var Path = require('path');
+var Newer = require('gulp-newer');
 var Jshint = require('gulp-jshint');
 var Concat = require('gulp-concat');
 var Uglify = require('gulp-uglify');
-var Rename = require('gulp-rename');
 
-Gulp.task('scripts', function () {
+Gulp.task('script', function () {
 
-    return Gulp.src([
-        // 'assets/js/fontdeck.js',
-        ])
-        .pipe(Concat('frame.js'))
-        .pipe(Gulp.dest('public/layouts'))
-        .pipe(Rename('frame.min.js'))
-        .pipe(Uglify())
-        .pipe(Gulp.dest('public/layouts'));
+    var bundleConfigs = [{
+        entries: [
+            'server/web/app.js'
+        ],
+        dest: 'public',
+        outputName: 'app.min.js'
+    }, {
+        entries: [
+            'server/web/home/script.js'
+        ],
+        dest: 'public/pages/home',
+        outputName: 'script.min.js'
+    }, {
+        entries: [
+            'server/web/contact/script.js'
+        ],
+        dest: 'public/pages/contact',
+        outputName: 'script.min.js'
+    }];
+
+    return bundleConfigs.map(function (bundleConfig) {
+
+        return Gulp.src(bundleConfig.entries)
+            .pipe(Uglify())
+            .pipe(Newer(Path.join(bundleConfig.dest, bundleConfig.outputName)))
+            .pipe(Concat(bundleConfig.outputName))
+            .pipe(Gulp.dest(bundleConfig.dest));
+    });
+
 });
