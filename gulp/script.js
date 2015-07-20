@@ -1,39 +1,61 @@
 var Gulp = require('gulp');
-var Path = require('path');
-var Newer = require('gulp-newer');
-var Jshint = require('gulp-jshint');
-var Concat = require('gulp-concat');
-var Uglify = require('gulp-uglify');
+var Gutil = require('gulp-util');
+var Webpack = require('webpack');
 
-Gulp.task('script', function () {
 
-    var bundleConfigs = [{
-        entries: [
-            'server/web/app.js'
+var CommonsChunkPlugin = Webpack.optimize.CommonsChunkPlugin;
+var UglifyJsPlugin = Webpack.optimize.UglifyJsPlugin;
+var executionCount = 0;
+
+
+Gulp.task('script', function (callback) {
+
+    var config = [{
+        entry: [
+          './server/web/home'
         ],
-        dest: 'public',
-        outputName: 'app.min.js'
-    }, {
-        entries: [
-            'server/web/home/script.js'
+        output: {
+            path: './public/pages/home',
+            filename: 'home.min.js',
+            sourceMapFilename: 'home.map.js'
+        },
+        resolve: {
+            extensions: ['', '.js']
+        },
+        devtool: 'source-map',
+        plugins: [
+            new UglifyJsPlugin({ compress: { warnings: false } })
+        ]}, {
+        entry: [
+           './server/web/contact'
         ],
-        dest: 'public/pages/home',
-        outputName: 'script.min.js'
-    }, {
-        entries: [
-            'server/web/contact/script.js'
-        ],
-        dest: 'public/pages/contact',
-        outputName: 'script.min.js'
-    }];
+        output: {
+            path: './public/pages/contact',
+            filename: 'contact.min.js',
+            sourceMapFilename: 'contact.map.js'
+        },
+        resolve: {
+            extensions: ['', '.js']
+        },
+        devtool: 'source-map',
+        plugins: [
+            new UglifyJsPlugin({ compress: { warnings: false } })
+    ]}];
 
-    return bundleConfigs.map(function (bundleConfig) {
+    Webpack(config, function (err, stats) {
 
-        return Gulp.src(bundleConfig.entries)
-            .pipe(Uglify())
-            .pipe(Newer(Path.join(bundleConfig.dest, bundleConfig.outputName)))
-            .pipe(Concat(bundleConfig.outputName))
-            .pipe(Gulp.dest(bundleConfig.dest));
+        if (err) {
+            throw new Gutil.PluginError('webpack', err);
+        }
+
+        Gutil.log('[webpack]', stats.toString({
+            colors: true,
+            chunkModules: false
+        }));
+
+        if (executionCount === 0) {
+            callback();
+        }
+        executionCount += 1;
     });
-
 });
