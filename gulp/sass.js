@@ -16,6 +16,12 @@ Gulp.task('sass', function () {
         outputName: 'core.css'
     }, {
         entries: [
+        'server/web/layouts/admin.scss'
+        ],
+        dest: 'public/layouts',
+        outputName: 'admin.css'
+    }, {
+        entries: [
         'server/web/home/index.scss'
         ],
         dest: 'public/pages/home',

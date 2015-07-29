@@ -11,7 +11,7 @@ html
       div.container
         div.navbar-header
           a.navbar-brand(href='/')
-            //- img.navbar-logo(src='public/media/logo-symbol-64x64.png', alt='Logo')
+            img.navbar-logo(src='public/media/logo-symbol-64x64.png', alt='Logo')
             span.navbar-brand-label #{projectName}
           button.navbar-toggle.collapsed(data-toggle='collapse', data-target='.my-navbar-collapse')
             span.icon-bar
@@ -55,6 +55,8 @@ html
 
     //if lte IE 9
       script(src='/layouts/ie-sucks.min.js?#{cacheBreaker}')
-    //- script(src='public/layouts/frame.js')
+    script(src='public/jspm_packages/system.js')
+    script(src='public/config.js')
+    script System.import("aurelia-bootstrapper")
 
     block feet
