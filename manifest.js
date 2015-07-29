@@ -64,6 +64,7 @@ var manifest = {
         './server/web/contact': {},
         './server/web/login': {},
         './server/web/admin': {},
+        './server/web/admin/users': {},
         './server/web/account': {}
     }
 };

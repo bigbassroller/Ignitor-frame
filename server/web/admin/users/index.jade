@@ -1,13 +1,14 @@
-extends ../../../layouts/admin
+extends ../../layouts/admin
 
 block head
   title Manage Users
 
 block neck
-  link(rel='stylesheet', href='/views/admin/users/index.min.css?#{cacheBreaker}')
+  //- link(rel='stylesheet', href='/public/layouts/frame.css')
+  //- link(rel='stylesheet', href='/views/admin/index.min.css?#{cacheBreaker}')
 
 block feet
-  script(src='/views/admin/users/index.min.js?#{cacheBreaker}')
+  //- script(src='/views/admin/users/index.min.js?#{cacheBreaker}')
 
 block body
   div.row
@@ -29,7 +30,7 @@ block body
     form.filters
       div.row
         div.col-sm-3
-          label Username Search
+          label Hello Username Search
           input.form-control(name='username', type='text')
         div.col-sm-3
           label Can Play Role
@@ -93,4 +94,4 @@ block body
         button.btn.btn-default.btn-page.btn-next(data-page!='<%= pages.next %>')  Next
       div.clearfix
 
-  script(type='text/template', id='data-results') !{data.results}
+  //- script(type='text/template', id='data-results') !{data.results}

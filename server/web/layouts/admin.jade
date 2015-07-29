@@ -12,7 +12,7 @@ html
       div.container
         div.navbar-header
           a.navbar-brand(href='/admin')
-            img.navbar-logo(src='/media/logo-symbol-64x64.png', alt='Logo')
+            img.navbar-logo(src='public/media/logo-symbol-64x64.png', alt='Logo')
             span.navbar-brand-label #{projectName}
           button.navbar-toggle.collapsed(data-toggle='collapse', data-target='.my-navbar-collapse')
             span.icon-bar
@@ -51,7 +51,7 @@ html
           div.clearfix
 
     div.ajax-spinner
-      img(src='/media/ajax-pulse.gif', alt='Loading')
+      img(src='public/media/ajax-pulse.gif', alt='Loading')
 
     script(type='text/template', id='tmpl-_search')
       div.dropdown
@@ -64,7 +64,8 @@ html
 
     //if lte IE 9
       script(src='/layouts/ie-sucks.min.js?#{cacheBreaker}')
-    //- script(src='/layouts/core.min.js?#{cacheBreaker}')
-    //- script(src='/layouts/admin.min.js?#{cacheBreaker}')
+    script(src='public/jspm_packages/system.js')
+    script(src='public/config.js')
+    script System.import("aurelia-bootstrapper")
 
     block feet
