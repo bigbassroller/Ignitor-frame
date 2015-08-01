@@ -38,9 +38,11 @@
     "nodemailer": "^1.x.x",
     "nodemailer-markdown": "^1.x.x",
     "object-assign": "^3.x.x",
+    "qs": "^4.0.0",
     "require-dir": "^0.3.0",
     "slug": "^0.9.x",
-    "visionary": "^2.x.x"
+    "visionary": "^2.x.x",
+    "xhr": "^2.0.3"
   },
   "devDependencies": {
     "code": "^1.x.x",
