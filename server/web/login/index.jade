@@ -7,6 +7,7 @@ block feet
   //- script(src='/views/login/index.min.js?#{cacheBreaker}')
 
 block body
+
   div.row
     div.col-sm-6
       div.page-header
@@ -16,11 +17,11 @@ block body
       form
         div.form-group(class='')
           label Username or Email:
-          input.form-control(type='text', name='username', value='')
+          input.form-control(type='text', name='username', value.bind='username')
           span.help-block 
         div.form-group(class='')
           label Password:
-          input.form-control(type='password', name='password', value='')
+          input.form-control(type='password', name='password', value.bind='password')
           span.help-block 
         div.form-actions
           button.btn.btn-primary.btn-login(type='button') Sign In

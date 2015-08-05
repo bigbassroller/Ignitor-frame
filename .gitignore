@@ -4,6 +4,5 @@ ignitor-frame.sublime-project
 node_modules/*
 test/artifacts/*
 /config.js
-public/
 _originals/
 
