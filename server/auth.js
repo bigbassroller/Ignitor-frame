@@ -1,4 +1,5 @@
 var Async = require('async');
+var Config = require('../config');
 
 
 exports.register = function (server, options, next) {
